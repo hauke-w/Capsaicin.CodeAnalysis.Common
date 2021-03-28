@@ -65,6 +65,10 @@ namespace
             var actual = CSharpSyntaxNodeExtensions.FindCompilationUnit(syntaxNode);
             Assert.IsNotNull(actual);
             Assert.AreSame(compilationUnit, actual);
+
+            actual = CSharpSyntaxNodeExtensions.FindCompilationUnit(compilationUnit);
+            Assert.IsNotNull(actual);
+            Assert.AreSame(compilationUnit, actual);
         }
 
         [TestMethod]
