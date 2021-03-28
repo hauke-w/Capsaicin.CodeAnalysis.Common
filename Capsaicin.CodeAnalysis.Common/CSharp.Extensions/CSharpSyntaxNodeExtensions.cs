@@ -8,8 +8,16 @@ using System.Text;
 
 namespace Capsaicin.UnitTesting.Generators
 {
+    /// <summary>
+    /// Extension methods for <see cref="CSharpSyntaxNode"/>.
+    /// </summary>
     public static class CSharpSyntaxNodeExtensions
     {
+        /// <summary>
+        /// Gets the using expressions from the compilation unit containing the specified <paramref name="syntaxNode"/>.
+        /// </summary>
+        /// <param name="syntaxNode"></param>
+        /// <returns></returns>
         public static HashSet<string> GetUsingsFromContainingCompilationUnit(this CSharpSyntaxNode syntaxNode)
         {
             var compilationUnit = FindCompilationUnit(syntaxNode);
@@ -18,6 +26,12 @@ namespace Capsaicin.UnitTesting.Generators
             return new HashSet<string>(usings);
         }
 
+        /// <summary>
+        /// Returns the <see cref="CompilationUnitSyntax"/> containing the specified <paramref name="syntaxNode"/>.
+        /// </summary>
+        /// <param name="syntaxNode"></param>
+        /// <returns></returns>
+        /// <exception cref="InvalidOperationException">Thrown if the containing CompilationUnitSyntax was not found.</exception>
         public static CompilationUnitSyntax FindCompilationUnit(this CSharpSyntaxNode? syntaxNode)
         {
             SyntaxNode? current = syntaxNode;
