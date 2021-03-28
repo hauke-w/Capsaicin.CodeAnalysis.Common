@@ -9,6 +9,12 @@ namespace Capsaicin.CodeAnalysis.Extensions
     /// </summary>
     public static class SymbolExtensions
     {
+        /// <summary>
+        /// Gets the stack of parent <see cref="INamedTypeSymbol"/>s for the specified <paramref name="symbol"/>.
+        /// The parent of type is determinde by the <see cref="ISymbol.ContainingType"/> property.
+        /// </summary>
+        /// <param name="symbol"></param>
+        /// <returns>A stack with the root containing type on top and the direct containing type at the bottom.</returns>
         public static Stack<INamedTypeSymbol> GetContainingTypes(this ISymbol symbol)
         {
             var stack = new Stack<INamedTypeSymbol>();
@@ -22,6 +28,12 @@ namespace Capsaicin.CodeAnalysis.Extensions
             return stack;
         }
 
+        /// <summary>
+        /// Enumerates the <see cref="INamedTypeSymbol"/>s that are parent of the specified <paramref name="symbol"/>.
+        /// The parent of type is determinde by the <see cref="ISymbol.ContainingType"/> property.
+        /// </summary>
+        /// <param name="symbol"></param>
+        /// <returns>An enumerable that first returns the direct parent and the root as last.</returns>
         public static IEnumerable<INamedTypeSymbol> EnumerateContainingTypesOutwards(this ISymbol symbol)
         {
             INamedTypeSymbol? current = symbol.ContainingType;
@@ -32,6 +44,12 @@ namespace Capsaicin.CodeAnalysis.Extensions
             }
         }
 
+        /// <summary>
+        /// Returns whether the specified <paramref name="symbol"/> has a attribute whose class' name equals the specified <paramref name="attributeFullName"/>.
+        /// </summary>
+        /// <param name="symbol">The symbol that may have attributes.</param>
+        /// <param name="attributeFullName"></param>
+        /// <returns><c>true</c> if the full name of any attribute's full class name equals <paramref name="attributeFullName"/>.</returns>
         public static bool HasAttribute(this ISymbol symbol, string attributeFullName)
             => symbol.GetAttributes().Any(a => a.EqualsAttributeClass(attributeFullName));
     }
