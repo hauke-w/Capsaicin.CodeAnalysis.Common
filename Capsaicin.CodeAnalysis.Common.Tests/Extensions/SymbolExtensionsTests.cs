@@ -11,10 +11,10 @@ using System.Collections.Immutable;
 
 namespace Capsaicin.CodeAnalysis.Extensions
 {
-    [TestClass()]
+    [TestClass]
     public class SymbolExtensionsTests
     {
-        [TestMethod()]
+        [TestMethod]
         public void GetContainingTypesTest()
         {
             var symbolMocks = Enumerable.Range(0, 4)
@@ -40,7 +40,7 @@ namespace Capsaicin.CodeAnalysis.Extensions
             CollectionAssert.AreEqual(expected, actual);
         }
 
-        [TestMethod()]
+        [TestMethod]
         public void EnumerateContainingTypesOutwardsTest()
         {
             var symbolMocks = Enumerable.Range(0, 6)
@@ -68,7 +68,7 @@ namespace Capsaicin.CodeAnalysis.Extensions
             CollectionAssert.AreEqual(expected, actualAsList);
         }
 
-        [TestMethod()]
+        [TestMethod]
         public void HasAttributeTest()
         {
             var symbolMock = new Mock<ISymbol>(MockBehavior.Strict);
