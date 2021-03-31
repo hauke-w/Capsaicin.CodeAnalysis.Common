@@ -8,7 +8,7 @@
     <Description>Provides utilities / extension methods related to types in Microsoft.CodeAnalysis namespace.</Description>
     <Authors>Hauke Wittern</Authors>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <Version>0.1.0-beta.2</Version>
+    <Version>0.2.0-beta.1</Version>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageProjectUrl>https://github.com/hauke-w/Capsaicin.CodeAnalysis.Common</PackageProjectUrl>
