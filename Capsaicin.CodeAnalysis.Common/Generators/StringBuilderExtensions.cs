@@ -16,9 +16,15 @@ namespace Capsaicin.CodeAnalysis.Generators
         /// <param name="stringBuilder">The StringBuilder to which <paramref name="values"/> will be appended.</param>
         /// <param name="separator">The string that is appended to <paramref name="stringBuilder"/> between each value in <paramref name="values"/>.</param>
         /// <param name="values">The values to be appended. If null, nothing will be appended.</param>
-        public static void AppendJoin(this StringBuilder stringBuilder, string separator, params string?[]? values)
+        /// <exception cref="ArgumentNullException">Thrown if <paramref name="values"/> is null.</exception>
+        public static void AppendJoin(this StringBuilder stringBuilder, string? separator, params string?[] values)
         {
-            if (values is { Length: >= 1 })
+            if (values is null)
+            {
+                throw new ArgumentNullException(nameof(values));
+            }
+
+            if (values.Length >= 1 )
             {
                 stringBuilder.Append(values[0]);
                 for (int i = 1; i < values.Length; i++)

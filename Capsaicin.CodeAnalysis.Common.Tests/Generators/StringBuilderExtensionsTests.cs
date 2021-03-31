@@ -18,21 +18,26 @@ namespace Capsaicin.CodeAnalysis.Generators
         [DataRow("123", "", "1", "2", "3")]
         [DataRow("", "x")]
         [DataRow(" A--b--c - d ", "-", " A", "", "b", null, "c ", " d ")]
-        public void AppendJoinTest(string expected, string separator, params string?[]? values)
+        [DataRow("ab", null, "a", "b")]
+        public void AppendJoinTest(string expected, string? separator, params string?[] values)
         {
             var stringBuilder = new StringBuilder();
             StringBuilderExtensions.AppendJoin(stringBuilder, separator, values);
+
             var actual = stringBuilder.ToString();
             Assert.AreEqual(expected, actual);
+
+            // verify result is same as in .net core implementation of StringBuilder.AppendJoin(...)
+            var stringBuilder2 = new StringBuilder();
+            var expected2 = stringBuilder2.AppendJoin(separator, values).ToString();
+            Assert.AreEqual(expected2, expected);
         }
 
         [TestMethod]
-        public void AppendJoin_Null_Test()
+        public void AppendJoin_ArgumentNullException_Test()
         {
             var stringBuilder = new StringBuilder();
-            StringBuilderExtensions.AppendJoin(stringBuilder, " - ", null);
-            var actual = stringBuilder.ToString();
-            Assert.AreEqual(string.Empty, actual);
+            Assert.ThrowsException<ArgumentNullException>(()=> StringBuilderExtensions.AppendJoin(stringBuilder, " - ", null!));
         }
 
         [TestMethod]
