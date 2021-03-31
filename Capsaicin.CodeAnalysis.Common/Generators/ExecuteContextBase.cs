@@ -20,7 +20,10 @@ namespace Capsaicin.CodeAnalysis.Generators
             GeneratorExecutionContext = generatorExecutionContext;
         }
 
-        private readonly GeneratorExecutionContext GeneratorExecutionContext;
+        /// <summary>
+        /// The <see cref="GeneratorExecutionContext"/> for the current source generation session.
+        /// </summary>
+        protected GeneratorExecutionContext GeneratorExecutionContext { get; }
 
         /// <summary>
         /// Adds a diagnostic to the compilation. The first location of the <paramref name="forSymbol"/>
