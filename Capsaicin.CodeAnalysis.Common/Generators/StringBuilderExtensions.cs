@@ -8,6 +8,9 @@ namespace Capsaicin.CodeAnalysis.Generators
     /// <summary>
     /// Extension methods for <see cref="StringBuilder"/>.
     /// </summary>
+    /// <remarks>
+    /// This adds some methods missing in .Net standard 2.0
+    /// </remarks>
     public static class StringBuilderExtensions
     {
         /// <summary>
