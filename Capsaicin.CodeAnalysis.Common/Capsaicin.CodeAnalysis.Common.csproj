@@ -9,7 +9,6 @@
     <Authors>Hauke Wittern</Authors>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageProjectUrl>https://github.com/hauke-w/Capsaicin.CodeAnalysis.Common</PackageProjectUrl>
     <RepositoryUrl>https://github.com/hauke-w/Capsaicin.CodeAnalysis.Common.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
