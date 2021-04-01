@@ -35,6 +35,7 @@ jobs:
 
     - name: Set build configuration
       if: ${{ github.ref == 'refs/heads/main' }}
+      run: echo set build configuration to Release
       env:
         BuildConfiguration: Release
         
