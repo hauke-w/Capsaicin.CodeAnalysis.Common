@@ -40,4 +40,4 @@ jobs:
     - name: Test
       run: dotnet test --no-build --verbosity normal /p:configuration=${{ env.BuildConfiguration }}
     - name: Pack
-      run: dotnet pack Capsaicin.CodeAnalysis.Common/Capsaicin.CodeAnalysis.Common.csproj --no-build --verbosity normal
+      run: dotnet pack Capsaicin.CodeAnalysis.Common/Capsaicin.CodeAnalysis.Common.csproj --no-build --verbosity normal /p:configuration=${{ env.BuildConfiguration }}
