@@ -28,12 +28,13 @@ jobs:
         
     # https://github.com/GitTools/actions/blob/main/docs/examples/github/gitversion/execute/usage-examples.md
     - name: Determine Version
+      id:   gitversion
       uses: gittools/actions/gitversion/execute@v0.9.9
         
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
-      run: dotnet build --no-restore /p:configuration=Release /p:AssemblyInformationalVersion=${{ steps.gitversion.outputs.informationalVersion }} /p:Version=${{ steps.gitversion.outputs.fullSemVer }} /p:AssemblyVersion=${{ steps.gitversion.outputs.assemblySemFileVer }}
+      run: dotnet build --no-restore /p:configuration=Release /p:AssemblyInformationalVersion=${{ steps.gitversion.outputs.informationalVersion }} /p:Version=${{ steps.gitversion.outputs.fullSemVer }} /p:AssemblyVersion=$GitVersion_AssemblySemFileVer
     - name: Test
       run: dotnet test --no-build --verbosity normal
     - name: Pack
