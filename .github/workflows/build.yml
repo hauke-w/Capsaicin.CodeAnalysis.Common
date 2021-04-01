@@ -10,6 +10,8 @@ jobs:
   build:
 
     runs-on: windows-latest
+    env:
+      BuildConfiguration: Release
 
     steps:
     - uses: actions/checkout@v2
@@ -34,8 +36,8 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
-      run: dotnet build --no-restore /p:configuration=Release /p:AssemblyInformationalVersion=${{ steps.gitversion.outputs.informationalVersion }} /p:Version=${{ steps.gitversion.outputs.fullSemVer }} /p:AssemblyVersion=$GitVersion_AssemblySemFileVer
+      run: dotnet build --no-restore /p:configuration=$BuildConfiguration /p:AssemblyInformationalVersion=${{ steps.gitversion.outputs.informationalVersion }} /p:Version=${{ steps.gitversion.outputs.fullSemVer }} /p:AssemblyVersion=$GITVERSION_ASSEMBLYSEMFILEVER
     - name: Test
-      run: dotnet test --no-build --verbosity normal
+      run: dotnet test --no-build --verbosity normal /p:configuration=$BuildConfiguration
     - name: Pack
       run: dotnet pack Capsaicin.CodeAnalysis.Common/Capsaicin.CodeAnalysis.Common.csproj --no-build --verbosity normal
