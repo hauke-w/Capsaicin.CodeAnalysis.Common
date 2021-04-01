@@ -30,7 +30,6 @@ jobs:
         
     # https://github.com/GitTools/actions/blob/main/docs/examples/github/gitversion/execute/usage-examples.md
     - name: Determine Version
-      id:   gitversion
       uses: gittools/actions/gitversion/execute@v0.9.9
 
     - name: Set build configuration
@@ -42,8 +41,8 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
-      run: dotnet build --no-restore /p:configuration=${{ env.BuildConfiguration }} /p:AssemblyInformationalVersion=${{ steps.gitversion.outputs.informationalVersion }} /p:Version=${{ steps.gitversion.outputs.fullSemVer }} /p:AssemblyVersion=${{ steps.gitversion.outputs.assemblySemFileVer }}
+      run: dotnet build --no-restore /p:configuration=${{ env.BuildConfiguration }} /p:AssemblyInformationalVersion=${{ env.GitVersion_InformationalVersion }} /p:Version=${{ env.GitVersion_FullSemVer }} /p:AssemblyVersion=${{ env.GitVersion_AssemblySemFileVer }}
     - name: Test
       run: dotnet test --no-build --verbosity normal /p:configuration=${{ env.BuildConfiguration }}
     - name: Pack
-      run: dotnet pack Capsaicin.CodeAnalysis.Common/Capsaicin.CodeAnalysis.Common.csproj --no-build --verbosity normal /p:configuration=${{ env.BuildConfiguration }} /p:AssemblyInformationalVersion=${{ steps.gitversion.outputs.informationalVersion }} /p:Version=${{ steps.gitversion.outputs.fullSemVer }} /p:AssemblyVersion=${{ steps.gitversion.outputs.assemblySemFileVer }}
+      run: dotnet pack Capsaicin.CodeAnalysis.Common/Capsaicin.CodeAnalysis.Common.csproj --no-build --verbosity normal /p:configuration=${{ env.BuildConfiguration }} /p:AssemblyInformationalVersion=${{ env.GitVersion_InformationalVersion }} /p:Version=${{ env.GitVersion_FullSemVer }} /p:AssemblyVersion=${{ env.GitVersion_AssemblySemFileVer }}
