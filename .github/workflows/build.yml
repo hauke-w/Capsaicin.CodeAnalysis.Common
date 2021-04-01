@@ -33,7 +33,7 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
-      run: dotnet build --no-restore /p:configuration=Release /p:AssemblyInformationalVersion=${{ steps.gitversion.outputs.informationalVersion }}" /p:Version=${{ steps.gitversion.outputs.fullSemVer }} /p:AssemblyVersion=${{ steps.gitversion.outputs.assemblySemFileVer }}
+      run: dotnet build --no-restore /p:configuration=Release /p:AssemblyInformationalVersion=${{ steps.gitversion.outputs.informationalVersion }} /p:Version=${{ steps.gitversion.outputs.fullSemVer }} /p:AssemblyVersion=${{ steps.gitversion.outputs.assemblySemFileVer }}
     - name: Test
       run: dotnet test --no-build --verbosity normal
     - name: Pack
