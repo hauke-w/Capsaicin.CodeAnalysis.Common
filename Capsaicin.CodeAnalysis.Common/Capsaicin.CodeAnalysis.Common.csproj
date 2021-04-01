@@ -8,16 +8,15 @@
     <Description>Provides utilities / extension methods related to types in Microsoft.CodeAnalysis namespace.</Description>
     <Authors>Hauke Wittern</Authors>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <Version>0.2.0-beta.2</Version>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageProjectUrl>https://github.com/hauke-w/Capsaicin.CodeAnalysis.Common</PackageProjectUrl>
     <RepositoryUrl>https://github.com/hauke-w/Capsaicin.CodeAnalysis.Common.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <!--<DebugType>embedded</DebugType>
-    <DebugSymbols>true</DebugSymbols>-->
+    <DebugType>embedded</DebugType>
+    <DebugSymbols>true</DebugSymbols>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
-    <!--<ContinuousIntegrationBuild>True</ContinuousIntegrationBuild>-->
+    <ContinuousIntegrationBuild>True</ContinuousIntegrationBuild>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <Copyright>Hauke Wittern</Copyright>
