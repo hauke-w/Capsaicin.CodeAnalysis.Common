@@ -11,7 +11,7 @@ jobs:
 
     runs-on: windows-latest
     env:
-      BuildConfiguration: Release
+      BuildConfiguration: Debug
 
     steps:
     - uses: actions/checkout@v2
@@ -32,6 +32,11 @@ jobs:
     - name: Determine Version
       id:   gitversion
       uses: gittools/actions/gitversion/execute@v0.9.9
+
+    - name: Set build configuration
+      if: ${{ github.ref == 'refs/heads/main' }}
+      env:
+        BuildConfiguration: Release
         
     - name: Restore dependencies
       run: dotnet restore
