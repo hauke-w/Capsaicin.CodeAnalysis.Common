@@ -6,6 +6,7 @@ on:
     - main
     paths-ignore:
     - ./GitVersion.yaml
+    - ./README.md
     - .github/workflows/build.yml
   workflow_dispatch:
 
