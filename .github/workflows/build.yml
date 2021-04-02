@@ -56,3 +56,16 @@ jobs:
     - name: Push nuget package
       if: ${{ github.ref == 'refs/heads/main' }}
       run: dotnet nuget push **/*.nupkg --skip-duplicate --api-key ${{ secrets.NUGETAPIKEY }} --source https://api.nuget.org/v3/index.json
+
+    - name: Create tag
+      if: ${{ github.ref == 'refs/heads/main' }}
+      uses: actions/github-script@v3
+      with:
+        github-token: ${{ github.token }}
+        script: |
+          github.git.createRef({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            ref: "refs/tags/$GITVERSION_SEMVER",
+            sha: context.sha
+          })
