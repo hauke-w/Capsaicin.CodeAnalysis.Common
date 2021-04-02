@@ -6,7 +6,11 @@ on:
     - main
     - develop
   pull_request:
-    branches: [ main ]
+    branches:
+      include:
+        - main
+      exlude:
+        - develop
 
 jobs:
   build:
