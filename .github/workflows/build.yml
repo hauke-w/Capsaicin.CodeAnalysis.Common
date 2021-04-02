@@ -49,4 +49,4 @@ jobs:
     - name: Pack
       run: dotnet pack Capsaicin.CodeAnalysis.Common/Capsaicin.CodeAnalysis.Common.csproj --no-build --no-restore --verbosity normal /p:configuration=${{ env.BuildConfiguration }} /p:AssemblyInformationalVersion=${{ env.GitVersion_InformationalVersion }} /p:Version=${{ env.GitVersion_FullSemVer }} /p:AssemblyVersion=${{ env.GitVersion_AssemblySemFileVer }}
     - name: Push nuget package
-      run: dotnet nuget push **/*.nupkg --skip-duplicate --api-key ${{ secrets.NUGETAPIKEY }}
+      run: dotnet nuget push **/*.nupkg --skip-duplicate --api-key ${{ secrets.NUGETAPIKEY }} --source https://api.nuget.org/v3/index.json
