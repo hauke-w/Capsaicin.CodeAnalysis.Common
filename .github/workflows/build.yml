@@ -5,6 +5,7 @@ on:
     branches:
     - main
     - develop
+    - feature/*
     paths-ignore:
     - GitVersion.yaml
     - .github/workflows/build.yml
