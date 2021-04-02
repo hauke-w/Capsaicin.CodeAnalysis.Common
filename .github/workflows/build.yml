@@ -45,8 +45,8 @@ jobs:
     - name: Build
       run: dotnet build --no-restore /p:configuration=${{ env.BuildConfiguration }} /p:AssemblyInformationalVersion=${{ env.GitVersion_InformationalVersion }} /p:Version=${{ env.GitVersion_FullSemVer }} /p:AssemblyVersion=${{ env.GitVersion_AssemblySemFileVer }}
     - name: Test
-      run: dotnet test --no-build --verbosity normal /p:configuration=${{ env.BuildConfiguration }}
+      run: dotnet test --no-build --no-restore --verbosity normal /p:configuration=${{ env.BuildConfiguration }}
     - name: Pack
-      run: dotnet pack Capsaicin.CodeAnalysis.Common/Capsaicin.CodeAnalysis.Common.csproj --no-build --verbosity normal /p:configuration=${{ env.BuildConfiguration }} /p:AssemblyInformationalVersion=${{ env.GitVersion_InformationalVersion }} /p:Version=${{ env.GitVersion_FullSemVer }} /p:AssemblyVersion=${{ env.GitVersion_AssemblySemFileVer }}
+      run: dotnet pack Capsaicin.CodeAnalysis.Common/Capsaicin.CodeAnalysis.Common.csproj --no-build --no-restore --verbosity normal /p:configuration=${{ env.BuildConfiguration }} /p:AssemblyInformationalVersion=${{ env.GitVersion_InformationalVersion }} /p:Version=${{ env.GitVersion_FullSemVer }} /p:AssemblyVersion=${{ env.GitVersion_AssemblySemFileVer }}
     - name: Push nuget package
       run: dotnet nuget push --skip-duplicate --api-key ${{ secrets.NUGETAPIKEY }}
