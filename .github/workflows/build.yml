@@ -7,13 +7,11 @@ on:
     - develop
   pull_request:
     branches:
-      include:
-        - main
-      exlude:
-        - develop
+    - main
 
 jobs:
   build:
+    if: ${{ !github.event.issue.pull_request }}
 
     runs-on: windows-latest
     env:
