@@ -43,12 +43,13 @@ namespace Capsaicin.CodeAnalysis.Generators
         /// <summary>
         /// Appends a string to <paramref name="stringBuilder"/> with the specified <paramref name="indention"/>.
         /// If the <paramref name="indention"/> is null, no indention will be applied.
-        /// If value is null, nothing will be appended to <paramref name="stringBuilder"/>.
+        /// If <paramref name="value"/> is null, nothing will be appended to <paramref name="stringBuilder"/>.
         /// </summary>
         /// <param name="stringBuilder"></param>
         /// <param name="indention"></param>
         /// <param name="value"></param>
         /// <param name="indentEmptyLines">Specifies whether empty lines must be indented (true) or not (false).</param>
+        /// <returns>The input <paramref name="stringBuilder"/> that was passed as input.</returns>
         public static StringBuilder AppendIndented(this StringBuilder stringBuilder, string? indention, string? value, bool indentEmptyLines = false)
         {
             if (value is not null)
@@ -87,6 +88,17 @@ namespace Capsaicin.CodeAnalysis.Generators
             return stringBuilder;
         }
 
+        /// <summary>
+        /// Appends a string to <paramref name="stringBuilder"/> with the specified <paramref name="indentionLevel"/>.
+        /// If <paramref name="indentionLevel"/> or <paramref name="indentionStep"/> is zero, no indention will be applied.
+        /// If <paramref name="value"/> is null, nothing will be appended to <paramref name="stringBuilder"/>.
+        /// </summary>
+        /// <param name="stringBuilder"></param>
+        /// <param name="indentionLevel">The number of indention levels to be applied.</param>
+        /// <param name="value"></param>
+        /// <param name="indentEmptyLines"></param>
+        /// <param name="indentionStep">The number of space characters that will be used for indention per level.</param>
+        /// <returns>The input <paramref name="stringBuilder"/> that was passed as input.</returns>
         public static StringBuilder AppendIndented(this StringBuilder stringBuilder, int indentionLevel, string? value, bool indentEmptyLines = false, int indentionStep = 4)
         {
             if (indentionLevel < 0)
