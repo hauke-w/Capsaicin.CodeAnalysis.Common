@@ -26,6 +26,9 @@ namespace Capsaicin.CodeAnalysis.Generators
         /// Generates c# source code for the specified <paramref name="symbol"/> and appends the result to <paramref name="sourceBuilder"/>.
         /// The generated source code contains the nesting type hierarchy with the content evaluated by the <paramref name="contentGenerator"/> function.
         /// </summary>
+        /// <remarks>
+        /// The type hierarchy of <paramref name="symbol"/> supports class, interface, struct and record.
+        /// </remarks>
         /// <param name="symbol">A symbol that represents a member of type</param>
         /// <param name="sourceBuilder">The <see cref="StringBuilder"/> to which the generated code will be appended.</param>
         /// <param name="contentGenerator">A function that will generate the content for <paramref name="symbol"/>.</param>
