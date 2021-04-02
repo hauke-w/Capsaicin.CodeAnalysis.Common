@@ -5,6 +5,9 @@ on:
     branches:
     - main
     - develop
+    paths-ignore:
+    - GitVersion.yaml
+    - .github/workflows/build.yml
   pull_request:
     branches:
     - main
