@@ -4,8 +4,6 @@ on:
   push:
     branches:
     - main
-    - develop
-    - feature/*
     paths-ignore:
     - GitVersion.yaml
     - .github/workflows/build.yml
@@ -44,11 +42,17 @@ jobs:
         
     - name: Restore dependencies
       run: dotnet restore
+
     - name: Build
       run: dotnet build --no-restore /p:configuration=${{ env.BuildConfiguration }} /p:AssemblyInformationalVersion=${{ env.GitVersion_InformationalVersion }} /p:Version=${{ env.GitVersion_SemVer }} /p:AssemblyVersion=${{ env.GitVersion_AssemblySemFileVer }}
+
     - name: Test
       run: dotnet test --no-build --no-restore --verbosity normal /p:configuration=${{ env.BuildConfiguration }}
+
     - name: Pack
+      if: ${{ github.ref == 'refs/heads/main' }}
       run: dotnet pack Capsaicin.CodeAnalysis.Common/Capsaicin.CodeAnalysis.Common.csproj --no-build --no-restore --verbosity normal /p:configuration=${{ env.BuildConfiguration }} /p:AssemblyInformationalVersion=${{ env.GitVersion_InformationalVersion }} /p:Version=${{ env.GitVersion_SemVer }} /p:AssemblyVersion=${{ env.GitVersion_AssemblySemFileVer }}
+
     - name: Push nuget package
+      if: ${{ github.ref == 'refs/heads/main' }}
       run: dotnet nuget push **/*.nupkg --skip-duplicate --api-key ${{ secrets.NUGETAPIKEY }} --source https://api.nuget.org/v3/index.json
