@@ -67,6 +67,6 @@ jobs:
           github.git.createRef({
             owner: context.repo.owner,
             repo: context.repo.repo,
-            ref: "refs/tags/${{ GITVERSION_SEMVER }}",
+            ref: "refs/tags/${{ env.GitVersion_SemVer }}",
             sha: context.sha
           })
