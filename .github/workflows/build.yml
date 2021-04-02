@@ -9,13 +9,9 @@ on:
     paths-ignore:
     - GitVersion.yaml
     - .github/workflows/build.yml
-  pull_request:
-    branches:
-    - main
 
 jobs:
   build:
-    if: ${{ !github.event.issue.pull_request }}
 
     runs-on: windows-latest
     env:
