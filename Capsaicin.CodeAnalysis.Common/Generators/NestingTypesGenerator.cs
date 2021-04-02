@@ -21,9 +21,10 @@ namespace Capsaicin.CodeAnalysis.Generators
         /// <param name="sourceBuilder"></param>
         /// <param name="indentionLevel"></param>
         public delegate void ContentGenerator(StringBuilder sourceBuilder, int indentionLevel);
-        
+
         /// <summary>
-        /// 
+        /// Generates c# source code for the specified <paramref name="symbol"/> and appends the result to <paramref name="sourceBuilder"/>.
+        /// The generated source code contains the nesting type hierarchy with the content evaluated by the <paramref name="contentGenerator"/> function.
         /// </summary>
         /// <param name="symbol">A symbol that represents a member of type</param>
         /// <param name="sourceBuilder">The <see cref="StringBuilder"/> to which the generated code will be appended.</param>
