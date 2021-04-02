@@ -7,6 +7,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Capsaicin.CodeAnalysis.Comm
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Capsaicin.CodeAnalysis.Common.Tests", "Capsaicin.CodeAnalysis.Common.Tests\Capsaicin.CodeAnalysis.Common.Tests.csproj", "{7C9E16C6-D3C2-4915-9056-778092B65C79}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{372FCF7C-1A5E-4579-AB12-CE239A74C649}"
+	ProjectSection(SolutionItems) = preProject
+		LICENSE = LICENSE
+		README.md = README.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
