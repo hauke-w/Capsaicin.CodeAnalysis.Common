@@ -5,7 +5,7 @@ on:
     branches:
     - main
     paths-ignore:
-    - GitVersion.yaml
+    - ./GitVersion.yaml
     - .github/workflows/build.yml
   workflow_dispatch:
 
