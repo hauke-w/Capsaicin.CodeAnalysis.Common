@@ -52,5 +52,24 @@ namespace Capsaicin.CodeAnalysis.Extensions
         /// <returns><c>true</c> if the full name of any attribute's full class name equals <paramref name="attributeFullName"/>.</returns>
         public static bool HasAttribute(this ISymbol symbol, string attributeFullName)
             => symbol.GetAttributes().Any(a => a.EqualsAttributeClass(attributeFullName));
+
+        /// <summary>
+        /// Enumerates the attributes of the specified type.
+        /// </summary>
+        /// <param name="symbol"></param>
+        /// <param name="attributeFullName">The full name of the attribute class that is searched.</param>
+        /// <param name="includeSpecializing">If <c>true</c>, sub classes of the attribute type are included.</param>
+        /// <returns></returns>
+        public static IEnumerable<AttributeData> GetAttributes(this ISymbol symbol, string attributeFullName, bool includeSpecializing = false)
+        {
+            return symbol.GetAttributes().Where(HasAttributeClass);
+
+            bool HasAttributeClass(AttributeData a)
+            {
+                var attributeClass = a.AttributeClass;
+                return (attributeClass is not null && attributeClass.EqualsFullName(attributeFullName))
+                    || (attributeClass is not null && includeSpecializing && attributeClass.HasBaseTypeOf(attributeFullName));
+            }
+        }
     }
 }

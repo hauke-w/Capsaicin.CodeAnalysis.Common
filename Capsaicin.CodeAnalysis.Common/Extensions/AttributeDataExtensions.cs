@@ -14,6 +14,6 @@ namespace Capsaicin.CodeAnalysis.Extensions
         /// <param name="attributeFullName"></param>
         /// <returns></returns>
         public static bool EqualsAttributeClass(this AttributeData attributeData, string attributeFullName)
-            => attributeData.AttributeClass?.ToDisplayString() == attributeFullName;
+            => attributeData.AttributeClass?.EqualsFullName(attributeFullName) == true;
     }
 }
