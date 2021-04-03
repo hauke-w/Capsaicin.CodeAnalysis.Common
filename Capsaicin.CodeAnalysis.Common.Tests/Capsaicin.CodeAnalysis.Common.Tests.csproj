@@ -6,6 +6,8 @@
     <IsPackable>false</IsPackable>
 
     <Nullable>enable</Nullable>
+
+    <RootNamespace>Capsaicin.CodeAnalysis</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
